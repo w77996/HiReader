@@ -5,6 +5,7 @@ import com.w77996.hireader.base.BaseView;
 import com.w77996.hireader.zhihudaily.bean.ZhihuDailyBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/11.
@@ -14,7 +15,7 @@ public interface ZhihuDailyContract {
         void showLoading();
         void stopLoading();
         void showError();
-        void showResult(ArrayList<ZhihuDailyBean.StoriesBean> list);
+        void showResult(List<ZhihuDailyBean.StoriesBean> list);
         void showPickerDialog();
 
     }
