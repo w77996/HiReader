@@ -2,6 +2,7 @@ package com.w77996.hireader.utils;
 
 import com.w77996.hireader.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.joker.bean.JokerBean;
+import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
 import com.w77996.hireader.zhihudaily.bean.ZhihuDailyBean;
 
 import io.reactivex.Observable;
@@ -25,4 +26,11 @@ public interface ApiService {
             @Query("page") int page,
             @Query("pagesize") int pagesize
     );
+    @GET("toh?v=&key=02351f897b139cc86e39a225aaeaa42d")
+    Observable<TodayOfHistoryBean> getTodayOfHistoryData(
+        @Query("month") String month,
+        @Query("day") String day
+    );
+
+
 }

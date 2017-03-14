@@ -32,6 +32,7 @@ public class GuokrPresenter implements GuokrContract.Presenter {
     @Override
     public void requestData() {
         list.clear();
+        view.showLoading();
         HttpUtils.getInstance()
                 .create(ApiService.class,Api.GUOKR_ARTICLES)
                 .getGuokrHandpick()
@@ -51,7 +52,7 @@ public class GuokrPresenter implements GuokrContract.Presenter {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        view.showLoading();
+                        view.stopLoading();
                         view.showError();
                     }
                 });

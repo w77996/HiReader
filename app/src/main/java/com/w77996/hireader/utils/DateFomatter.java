@@ -3,6 +3,7 @@ package com.w77996.hireader.utils;
 import com.orhanobut.logger.Logger;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -22,7 +23,12 @@ public class DateFomatter {
         Logger.d(sDate);
         return sDate;
     }
-
+    public String TodayOfHistoryDateFormat(){
+        Calendar calendar = Calendar.getInstance();
+        final int month = calendar.get(Calendar.MONTH) + 1;
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return month+""+day;
+    }
     public String DoubanDateFormat(long date){
         String sDate;
         Date d = new Date(date);

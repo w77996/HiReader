@@ -1,13 +1,22 @@
 package com.w77996.hireader.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -44,6 +53,7 @@ public class MainFragment extends Fragment {
         guokrFragment = GuokrFragment.newInstance();
         zhihuDailyPresenter = new ZhihuDailyPresenter(mContext, zhihuDailyFragment);
         guokrPresenter = new GuokrPresenter(mContext,guokrFragment);
+
     }
 
     @Nullable
@@ -75,6 +85,8 @@ public class MainFragment extends Fragment {
         });
         return view;
     }
+
+
 
     private void initView(View view) {
         mTabLayout = (TabLayout) view.findViewById(R.id.fragment_main_tablayout);
