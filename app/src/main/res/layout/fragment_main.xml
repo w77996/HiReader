@@ -36,7 +36,7 @@
         android:layout_marginBottom="75dp"
         android:layout_gravity="bottom|end"
 
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/rili"
         app:backgroundTint="@color/colorPrimary"
         app:elevation="4dp"
         app:borderWidth="0dp"/>

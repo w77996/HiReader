@@ -1,8 +1,8 @@
-package com.w77996.hireader.guokr.contract;
+package com.w77996.hireader.homepage.guokr.contract;
 
 import com.w77996.hireader.base.BasePresenter;
 import com.w77996.hireader.base.BaseView;
-import com.w77996.hireader.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
 
 import java.util.List;
 

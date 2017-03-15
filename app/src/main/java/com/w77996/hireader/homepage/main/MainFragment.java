@@ -1,30 +1,21 @@
-package com.w77996.hireader.main;
+package com.w77996.hireader.homepage.main;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.guokr.GuokrFragment;
-import com.w77996.hireader.guokr.presenter.GuokrPresenter;
-import com.w77996.hireader.zhihudaily.ZhihuDailyFragment;
-import com.w77996.hireader.zhihudaily.ZhihuDailyPresenter;
+import com.w77996.hireader.homepage.guokr.GuokrFragment;
+import com.w77996.hireader.homepage.guokr.presenter.GuokrPresenter;
+import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyFragment;
+import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyPresenter;
 
 /**
  * Created by Administrator on 2017/3/11.
@@ -39,6 +30,8 @@ public class MainFragment extends Fragment {
     private ZhihuDailyPresenter zhihuDailyPresenter;
     private GuokrFragment guokrFragment;
     private GuokrPresenter guokrPresenter;
+
+
     public MainFragment(){
 
     }

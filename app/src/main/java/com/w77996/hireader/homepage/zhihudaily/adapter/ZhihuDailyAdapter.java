@@ -1,4 +1,4 @@
-package com.w77996.hireader.zhihudaily.adapter;
+package com.w77996.hireader.homepage.zhihudaily.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.w77996.hireader.R;
 import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
-import com.w77996.hireader.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,12 +95,13 @@ public class ZhihuDailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             imageView = (ImageView) itemView.findViewById(R.id.recycleview_normal_imageview);
             textView = (TextView) itemView.findViewById(R.id.recycleview_normal_textview);
             this.listener = onRecyclerViewOnClickListener;
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             if (listener != null) {
-                listener.onItemClick(itemView, getLayoutPosition());
+                listener.onItemClick(v, getLayoutPosition());
             }
         }
     }

@@ -1,12 +1,12 @@
-package com.w77996.hireader.main;
+package com.w77996.hireader.homepage.main;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.w77996.hireader.guokr.GuokrFragment;
-import com.w77996.hireader.zhihudaily.ZhihuDailyFragment;
+import com.w77996.hireader.homepage.guokr.GuokrFragment;
+import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyFragment;
 
 /**
  * Created by Administrator on 2017/3/13.

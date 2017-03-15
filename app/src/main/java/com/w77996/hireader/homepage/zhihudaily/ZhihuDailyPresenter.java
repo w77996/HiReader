@@ -1,23 +1,24 @@
-package com.w77996.hireader.zhihudaily;
+package com.w77996.hireader.homepage.zhihudaily;
 
 import android.content.Context;
+import android.content.Intent;
 
+import com.orhanobut.logger.Logger;
+import com.w77996.hireader.detail.DetailActivity;
 import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.DateFomatter;
 import com.w77996.hireader.utils.HttpUtils;
-import com.w77996.hireader.zhihudaily.bean.ZhihuDailyBean;
-import com.w77996.hireader.zhihudaily.contract.ZhihuDailyContract;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.homepage.zhihudaily.contract.ZhihuDailyContract;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Logger;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by Administrator on 2017/3/11.
@@ -80,7 +81,11 @@ public class ZhihuDailyPresenter implements ZhihuDailyContract.Presenter {
 
     @Override
     public void loadDetail(int position) {
-
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        Logger.d(list.get(position).getId());
+        intent.putExtra("url",list.get(position).getId()+"");
+        Logger.d(position);
+        mContext.startActivity(intent);
     }
 
     @Override

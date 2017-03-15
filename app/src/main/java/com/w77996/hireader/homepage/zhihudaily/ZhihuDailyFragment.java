@@ -1,4 +1,4 @@
-package com.w77996.hireader.zhihudaily;
+package com.w77996.hireader.homepage.zhihudaily;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,11 +6,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +16,13 @@ import android.view.ViewGroup;
 import com.w77996.hireader.R;
 import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.utils.DateFomatter;
-import com.w77996.hireader.zhihudaily.adapter.ZhihuDailyAdapter;
-import com.w77996.hireader.zhihudaily.bean.ZhihuDailyBean;
-import com.w77996.hireader.zhihudaily.contract.ZhihuDailyContract;
+import com.w77996.hireader.homepage.zhihudaily.adapter.ZhihuDailyAdapter;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.homepage.zhihudaily.contract.ZhihuDailyContract;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by w77996 on 2017/3/11.
@@ -161,6 +157,7 @@ public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.
     public void showPickerDialog() {
         Calendar now = Calendar.getInstance();
         now.set(mYear, mMonth, mDay);
+
         DatePickerDialog dialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
@@ -173,7 +170,7 @@ public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.
                 presenter.requestData(temp.getTimeInMillis(), true);
             }
         }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-
+        dialog.setAccentColor(getActivity().getResources().getColor(R.color.colorPrimary));
         dialog.setMaxDate(Calendar.getInstance());
         Calendar minDate = Calendar.getInstance();
         // 2013.5.20是知乎日报api首次上线

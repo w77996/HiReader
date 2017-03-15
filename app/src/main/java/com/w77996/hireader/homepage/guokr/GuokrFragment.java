@@ -1,6 +1,5 @@
-package com.w77996.hireader.guokr;
+package com.w77996.hireader.homepage.guokr;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -13,9 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.guokr.bean.GuokrHandpickNews;
-import com.w77996.hireader.guokr.contract.GuokrContract;
-import com.w77996.hireader.guokr.presenter.GuokrPresenter;
+import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.homepage.guokr.contract.GuokrContract;
 import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
 
 import java.util.List;
