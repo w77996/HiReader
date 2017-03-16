@@ -1,8 +1,11 @@
 package com.w77996.hireader.news.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
+import com.w77996.hireader.detail.BeanType;
+import com.w77996.hireader.detail.DetailActivity;
 import com.w77996.hireader.news.bean.NewsBean;
 import com.w77996.hireader.news.contract.NewsListContract;
 import com.w77996.hireader.utils.Api;
@@ -80,7 +83,9 @@ public class NewsListPresenter implements NewsListContract.Presenter {
 
     @Override
     public void showDetail(int position) {
-
+        context.startActivity(new Intent(context, DetailActivity.class)
+                .putExtra("type", BeanType.TYPE_NEWS)
+                .putExtra("link", list.get(position).getLink()+""));
     }
 
     @Override

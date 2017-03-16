@@ -1,8 +1,11 @@
 package com.w77996.hireader.homepage.guokr.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
+import com.w77996.hireader.detail.BeanType;
+import com.w77996.hireader.detail.DetailActivity;
 import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.homepage.guokr.contract.GuokrContract;
 import com.w77996.hireader.utils.Api;
@@ -65,7 +68,10 @@ public class GuokrPresenter implements GuokrContract.Presenter {
 
     @Override
     public void loadDetail(int position) {
-
+        mContext.startActivity(new Intent(mContext, DetailActivity.class)
+                .putExtra("type", BeanType.TYPE_GUOKR)
+                .putExtra("id", list.get(position).getId()+"")
+                .putExtra("title", list.get(position).getTitle()));
     }
 
 

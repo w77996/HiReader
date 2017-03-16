@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
+import com.w77996.hireader.detail.BeanType;
 import com.w77996.hireader.detail.DetailActivity;
 import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
@@ -83,7 +84,8 @@ public class ZhihuDailyPresenter implements ZhihuDailyContract.Presenter {
     public void loadDetail(int position) {
         Intent intent = new Intent(mContext, DetailActivity.class);
         Logger.d(list.get(position).getId());
-        intent.putExtra("url",list.get(position).getId()+"");
+        intent.putExtra("id",list.get(position).getId()+"");
+        intent.putExtra("type", BeanType.TYPE_ZHIHU);
         Logger.d(position);
         mContext.startActivity(intent);
     }

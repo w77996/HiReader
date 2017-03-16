@@ -1,6 +1,7 @@
 package com.w77996.hireader.utils;
 
 import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.joker.bean.JokerBean;
 import com.w77996.hireader.news.bean.NewsBean;
 import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
@@ -19,8 +20,18 @@ public interface ApiService {
     Observable<ZhihuDailyBean> getZhihuDaily(
             @Path("date") String date);
 
+    @GET("story/{id}")
+    Observable<ZhihuDetailBean> getZhihuDetail(
+            @Path("id") String id);
+    @GET("api/4/news/{id}")
+    Observable<ZhihuDetailBean> getZhihuDetailNews(
+            @Path("id") String id);
+
     @GET("article.json?retrieve_type=by_since&category=all&limit=25&ad=1")
     Observable<GuokrHandpickNews> getGuokrHandpick();
+    @GET("pick/{id}")
+    Observable<String> getGuoKrDetail(
+            @Path("id") String id);
 
     @GET("text.from?key=ae240f7fba620fc370b803566654949e")
     Observable<JokerBean> getJokerData(

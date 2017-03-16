@@ -22,7 +22,15 @@ import android.webkit.WebViewClient;
 
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.utils.Api;
+import com.w77996.hireader.utils.ApiService;
+import com.w77996.hireader.utils.HttpUtils;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2017/3/15.
@@ -30,6 +38,8 @@ import com.w77996.hireader.utils.Api;
 public class DetailActivity extends AppCompatActivity {
     WebView webView;
     private Toolbar toolbar;
+    private int mType;
+    private String mUrl;
 
 
     @Override
@@ -56,13 +66,60 @@ public class DetailActivity extends AppCompatActivity {
         WebSettings webSettings  =webView.getSettings();
         webView.setScrollbarFadingEnabled(true);
         webSettings.setJavaScriptEnabled(true);
+       webSettings.setDomStorageEnabled(true);
         webSettings.setBuiltInZoomControls(false);
         Intent intent = getIntent();
-        String url = "http://daily.zhihu.com/story/9289923";
-        Logger.d(url);
-        webView.loadUrl(url);
+        mType = intent.getIntExtra("type",1);
         webView.setWebViewClient(new webViewClient());
-        Logger.d(Api.ZHIHU_NEWS+url);
+        String id;
+        String url;
+        switch (mType){
+            case BeanType.TYPE_ZHIHU:
+                id= intent.getStringExtra("id");
+                url= Api.ZHIHU_NEWS+id;
+
+             HttpUtils.getInstance()
+                        .create(ApiService.class,Api.ZHIHU_NEWS)
+                        .getZhihuDetailNews(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<ZhihuDetailBean>() {
+                            @Override
+                            public void accept(ZhihuDetailBean zhihuDetailBean) throws Exception {
+                                    String url = zhihuDetailBean.getShare_url();
+                                Logger.d(url);
+                                webView.loadUrl(url);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Logger.e(throwable+"");
+                            }
+                        });
+                break;
+            case BeanType.TYPE_GUOKR:
+                 id= intent.getStringExtra("id");
+                 url = Api.GUOKR_ARTICLE_LINK+"pick/"+id;
+                Logger.d(url);
+                webView.loadUrl(url);
+                break;
+            case BeanType.TYPE_HISTORY:
+
+                break;
+            case BeanType.TYPE_NEWS:
+                id= intent.getStringExtra("link");
+                webView.loadUrl(id);
+                break;
+        }
+      //  String url = "http://daily.zhihu.com/story/9289923";
+     //   Logger.d(url);
+      //  webView.loadUrl(url);
+
+      //  Logger.d(Api.ZHIHU_NEWS+url);
+
+    }
+
+    private void swithcType(String mType) {
 
     }
 
@@ -78,24 +135,15 @@ public class DetailActivity extends AppCompatActivity {
             CustomTabsIntent  c= customTabsIntent.build();
             c.launchUrl(DetailActivity.this, Uri.parse(url));*/
             //如果不需要其他对点击链接事件的处理返回true，否则返回false
-            DetailActivity.this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
-
+           // DetailActivity.this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+            webView.loadUrl(url);
             return true;
 
         }
 
 
     }
-    @Override
-    // 设置回退
-    // 覆盖Activity类的onKeyDown(int keyCoder,KeyEvent event)方法
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
-            webView.goBack(); // goBack()表示返回WebView的上一页面
-            return true;
-        }
-        return super.onKeyDown(keyCode,event);
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
