@@ -34,7 +34,7 @@ public class AboutActivity extends AppCompatActivity {
                 .setPhoto(R.mipmap.profile_picture)
                 .setCover(R.mipmap.profile_cover)
                 .setName("Your Full Name")
-                .setSubTitle("Mobile Developer")
+                .setSubTitle("Mobile Develope")
                 .setBrief("I'm warmed of mobile technologies. Ideas maker, curious and nature lover.")
                 .setAppIcon(R.mipmap.ic_launcher)
                 .setAppName(R.string.app_name)
