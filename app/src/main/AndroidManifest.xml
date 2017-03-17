@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".detail.DetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".about.AboutActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

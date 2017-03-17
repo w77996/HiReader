@@ -13,6 +13,10 @@
             android:id="@+id/nav_news"
             android:icon="@drawable/ic_list_black_24dp"
             android:title="新闻资讯" />
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="聊天机器人" />
     </group>
     <item android:title="其他设置">
         <menu>

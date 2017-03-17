@@ -15,5 +15,5 @@ public class Api {
     public static final String TODAY_HISTORY = "http://api.juheapi.com/japi/";
     public static final String SHOWAPI_NEWS= "https://route.showapi.com/";
 
-    public static final String ROBOT= "https://route.showapi.com/";
+    public static final String ROBOT= "http://www.tuling123.com/openapi/";
 }

@@ -1,5 +1,6 @@
 package com.w77996.hireader.utils;
 
+import com.w77996.hireader.chat.bean.ChatBean;
 import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.joker.bean.JokerBean;
@@ -50,4 +51,7 @@ public interface ApiService {
             @Query("channelName") String type,
             @Query("page") int page,
             @Query("showapi_timestamp") String time);
+
+    @GET("api?key=1c21b0606d78455c8760136c8dadfd70")
+    Observable<ChatBean> getChatData(@Query("info") String info);
 }

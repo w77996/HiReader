@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/robot_right_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:background="@drawable/right_talk"/>
+</RelativeLayout>

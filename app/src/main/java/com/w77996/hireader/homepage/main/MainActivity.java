@@ -1,5 +1,6 @@
 package com.w77996.hireader.homepage.main;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.w77996.hireader.R;
+import com.w77996.hireader.about.AboutActivity;
+import com.w77996.hireader.chat.ChatFragment;
 import com.w77996.hireader.news.NewsFragment;
 import com.w77996.hireader.todayofhistory.TodayOfHistoryFragment;
 import com.w77996.hireader.todayofhistory.presenter.TodayOfHistoryPresenter;
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private  MainFragment mainFragment;
     private TodayOfHistoryFragment todayOfHistoryFragment;
     private TodayOfHistoryPresenter todayOfHistoryPresenter;
-
+    private ChatFragment chatFragment;
     private NewsFragment newsFragment;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mainFragment = MainFragment.getInstance();
         todayOfHistoryFragment = TodayOfHistoryFragment.getInstance();
         newsFragment = NewsFragment.getInstance();
+        chatFragment = ChatFragment.newIntance();
         todayOfHistoryPresenter = new TodayOfHistoryPresenter(MainActivity.this,todayOfHistoryFragment);
         if(!mainFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container,mainFragment,"MainFragment").commit();
@@ -43,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if(!newsFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container,newsFragment,"newsFragment").commit();
+        }
+        if(!chatFragment.isAdded()){
+            getSupportFragmentManager().beginTransaction().add(R.id.main_container,chatFragment,"chatFragment").commit();
         }
         showMainFragment();
     }
@@ -71,17 +78,36 @@ public class MainActivity extends AppCompatActivity {
                     showTodayOfHitoryFragment();
                 }else if (id == R.id.nav_news) {
                     showNewsFragment();
+                }else if(id==R.id.nav_about){
+                    MainActivity.this.startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                }else if(id==R.id.nav_chat){
+                   showChatFragment();
                 }
                 return true;
             }
+
+            
         });
     }
+
+    private void showChatFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(chatFragment);
+        fragmentTransaction.hide(todayOfHistoryFragment);
+        fragmentTransaction.hide(newsFragment);
+        fragmentTransaction.hide(mainFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle("聊天机器人");
+    }
+
     private void showMainFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(mainFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(newsFragment);
+        fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle(getResources().getString(R.string.app_name));
@@ -94,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.show(todayOfHistoryFragment);
         fragmentTransaction.hide(mainFragment);
         fragmentTransaction.hide(newsFragment);
-
+        fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("历史上的今天");
@@ -108,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.show(newsFragment);
         fragmentTransaction.hide(mainFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
-
+        fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("新闻资讯");
