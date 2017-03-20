@@ -11,8 +11,6 @@ import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
 import com.w77996.hireader.chat.bean.ChatMsgBean;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +39,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             case ChatMsgBean.TYPE_SEND:
 
-                return new LeftMsgViewHolder(inflater.inflate(R.layout.robot_right,parent,false));
+                return new LeftMsgViewHolder(inflater.inflate(R.layout.chat_right,parent,false));
                 case ChatMsgBean.TYPE_RECIV:
 
-                    return new RightMsgViewHolder(inflater.inflate(R.layout.robot_left,parent,false));
+                    return new RightMsgViewHolder(inflater.inflate(R.layout.chat_left,parent,false));
         }
 
         return null;

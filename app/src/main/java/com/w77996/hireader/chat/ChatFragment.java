@@ -27,7 +27,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     private EditText editText;
     private Button button;
     private ChatContract.Presenter presenter;
-    private ChatAdapter robotAdapter;
+    private ChatAdapter chatAdapter;
     private List<ChatMsgBean> list = new ArrayList<>();
     public static  ChatFragment newIntance(){
         return new ChatFragment();
@@ -42,15 +42,15 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.robot_fragment,container,false);
+        View view = inflater.inflate(R.layout.chat_fragment,container,false);
         initView(view);
 
         ChatMsgBean chatMsgBean = new ChatMsgBean();
         chatMsgBean.setType(ChatMsgBean.TYPE_RECIV);
         chatMsgBean.setMsg("你好,我是智能机器人");
         list.add(chatMsgBean);
-        robotAdapter = new ChatAdapter(getContext(),list);
-        recyclerView.setAdapter(robotAdapter);
+        chatAdapter = new ChatAdapter(getContext(),list);
+        recyclerView.setAdapter(chatAdapter);
         return view;
     }
 
@@ -64,7 +64,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
 
         list.add(data);
 
-        robotAdapter.notifyDataSetChanged();
+        chatAdapter.notifyDataSetChanged();
         recyclerView.scrollToPosition(list.size()-1);
     }
 
@@ -96,7 +96,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
                 chatMsgBean.setType(ChatMsgBean.TYPE_SEND);
                 chatMsgBean.setMsg(editText.getText().toString());
                 list.add(chatMsgBean);
-                robotAdapter.notifyDataSetChanged();
+                chatAdapter.notifyDataSetChanged();
                 recyclerView.scrollToPosition(list.size()-1);
 
                 editText.setText("");
