@@ -7,15 +7,15 @@
             android:title="首页" />
         <item
             android:id="@+id/nav_todayofhistory"
-            android:icon="@drawable/ic_list_black_24dp"
+            android:icon="@drawable/icon_historyoftoday"
             android:title="历史上的今天" />
         <item
             android:id="@+id/nav_news"
-            android:icon="@drawable/ic_list_black_24dp"
+            android:icon="@drawable/icon_news"
             android:title="新闻资讯" />
         <item
             android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_list_black_24dp"
+            android:icon="@drawable/icon_chat"
             android:title="聊天机器人" />
     </group>
     <item android:title="其他设置">
@@ -27,12 +27,12 @@
 
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_list_black_24dp"
+                android:icon="@drawable/icon_setting"
                 android:title="设置" />
 
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_list_black_24dp"
+                android:icon="@drawable/icon_about"
                 android:title="关于" />
 
         </menu>

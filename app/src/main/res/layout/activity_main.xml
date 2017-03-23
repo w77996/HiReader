@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="5dp"
-                app:layout_scrollFlags="enterAlways|scroll"
+                app:layout_scrollFlags="enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
         </android.support.design.widget.AppBarLayout>
         <FrameLayout

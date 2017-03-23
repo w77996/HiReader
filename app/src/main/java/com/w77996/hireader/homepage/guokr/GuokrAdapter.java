@@ -42,9 +42,9 @@ public class GuokrAdapter extends RecyclerView.Adapter<GuokrAdapter.GuokrViewHol
     public void onBindViewHolder(GuokrViewHolder holder, int position) {
         Glide.with(mContext).load(list.get(position).getHeadline_img_tb())
                 .asBitmap()
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.icon_load)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.icon_error)
                 .centerCrop()
                 .into(((GuokrViewHolder) holder).imageView);
         holder.textView.setText(list.get(position).getTitle());

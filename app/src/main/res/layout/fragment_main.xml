@@ -33,7 +33,7 @@
         android:id="@+id/fragment_main_fab"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="16dp"
         android:layout_gravity="bottom|end"
 
         android:src="@drawable/rili"
