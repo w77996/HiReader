@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.zhihudaily;
+package com.w77996.hireader.zhihuguokr.zhihudaily;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.DateFomatter;
 import com.w77996.hireader.utils.HttpUtils;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
-import com.w77996.hireader.homepage.zhihudaily.contract.ZhihuDailyContract;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.zhihuguokr.zhihudaily.contract.ZhihuDailyContract;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -1,12 +1,12 @@
 package com.w77996.hireader.utils;
 
 import com.w77996.hireader.chat.bean.ChatBean;
-import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDetailBean;
+import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.joker.bean.JokerBean;
 import com.w77996.hireader.news.bean.NewsBean;
 import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

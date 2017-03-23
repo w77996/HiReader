@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.main;
+package com.w77996.hireader.zhihuguokr;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,19 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.homepage.guokr.GuokrFragment;
-import com.w77996.hireader.homepage.guokr.presenter.GuokrPresenter;
-import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyFragment;
-import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyPresenter;
+import com.w77996.hireader.zhihuguokr.guokr.GuokrFragment;
+import com.w77996.hireader.zhihuguokr.guokr.presenter.GuokrPresenter;
+import com.w77996.hireader.zhihuguokr.zhihudaily.ZhihuDailyFragment;
+import com.w77996.hireader.zhihuguokr.zhihudaily.ZhihuDailyPresenter;
 
 /**
  * Created by Administrator on 2017/3/11.
  */
-public class MainFragment extends Fragment {
+public class ZhihuGuokrMainFragment extends Fragment {
     private Context mContext;
     private TabLayout mTabLayout;
     private FloatingActionButton mFloatingActionButton;
-    private MainPagerAdpater mainPagerAdpater;
+    private ZhihuGuokrPagerAdpater zhihuGuokrPagerAdpater;
 
     private ZhihuDailyFragment zhihuDailyFragment;
     private ZhihuDailyPresenter zhihuDailyPresenter;
@@ -32,11 +32,11 @@ public class MainFragment extends Fragment {
     private GuokrPresenter guokrPresenter;
 
 
-    public MainFragment(){
+    public ZhihuGuokrMainFragment(){
 
     }
-    public static MainFragment getInstance(){
-        return new MainFragment();
+    public static ZhihuGuokrMainFragment getInstance(){
+        return new ZhihuGuokrMainFragment();
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,14 +86,14 @@ public class MainFragment extends Fragment {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.fragment_main_viewpager);
         viewPager.setOffscreenPageLimit(2);
 
-        mainPagerAdpater = new MainPagerAdpater(
+        zhihuGuokrPagerAdpater = new ZhihuGuokrPagerAdpater(
                 getChildFragmentManager(),
                 mContext,
                 zhihuDailyFragment,
                 guokrFragment
                );
 
-        viewPager.setAdapter(mainPagerAdpater);
+        viewPager.setAdapter(zhihuGuokrPagerAdpater);
         mTabLayout.setupWithViewPager(viewPager);
     }
 }

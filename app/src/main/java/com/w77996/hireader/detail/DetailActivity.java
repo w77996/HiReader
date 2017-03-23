@@ -1,19 +1,11 @@
 package com.w77996.hireader.detail;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsCallback;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -22,8 +14,7 @@ import android.webkit.WebViewClient;
 
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDetailBean;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.HttpUtils;

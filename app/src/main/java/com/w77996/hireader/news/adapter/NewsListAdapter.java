@@ -11,10 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.w77996.hireader.R;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.news.bean.NewsBean;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;

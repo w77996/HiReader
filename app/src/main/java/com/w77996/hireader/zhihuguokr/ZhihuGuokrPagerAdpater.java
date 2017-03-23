@@ -1,23 +1,23 @@
-package com.w77996.hireader.homepage.main;
+package com.w77996.hireader.zhihuguokr;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.w77996.hireader.homepage.guokr.GuokrFragment;
-import com.w77996.hireader.homepage.zhihudaily.ZhihuDailyFragment;
+import com.w77996.hireader.zhihuguokr.guokr.GuokrFragment;
+import com.w77996.hireader.zhihuguokr.zhihudaily.ZhihuDailyFragment;
 
 /**
  * Created by Administrator on 2017/3/13.
  */
-public class MainPagerAdpater extends FragmentPagerAdapter{
+public class ZhihuGuokrPagerAdpater extends FragmentPagerAdapter{
     private ZhihuDailyFragment zhihuDailyFragment;
     private GuokrFragment guokrFragment;
     private Context mContext;
 
     private String[] titles;
-    public MainPagerAdpater(FragmentManager fm, Context context, ZhihuDailyFragment zhihuDailyFragment, GuokrFragment guokrFragment){
+    public ZhihuGuokrPagerAdpater(FragmentManager fm, Context context, ZhihuDailyFragment zhihuDailyFragment, GuokrFragment guokrFragment){
         super(fm);
         this.mContext =context;
         this.zhihuDailyFragment =zhihuDailyFragment;

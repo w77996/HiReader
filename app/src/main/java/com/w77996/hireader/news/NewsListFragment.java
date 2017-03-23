@@ -14,14 +14,13 @@ import android.view.ViewGroup;
 
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.news.adapter.NewsListAdapter;
 import com.w77996.hireader.news.bean.NewsBean;
 import com.w77996.hireader.news.contract.NewsListContract;
 import com.w77996.hireader.news.presenter.NewsListPresenter;
 import com.w77996.hireader.utils.DateFomatter;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**

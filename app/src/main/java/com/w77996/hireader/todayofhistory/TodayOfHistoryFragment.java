@@ -12,11 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.todayofhistory.adapter.TodayOfHistoryAdapter;
 import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
 import com.w77996.hireader.todayofhistory.contract.TodayOfHistoryContract;
-import com.w77996.hireader.todayofhistory.presenter.TodayOfHistoryPresenter;
 
 import java.util.List;
 

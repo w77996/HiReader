@@ -30,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
         );
         Intent intent = new Intent();
         AboutView view = AboutBuilder.with(this)
-                .setBackgroundColor(R.color.mdtp_dark_gray)
+                .setBackgroundColor(R.color.mdtp_background_color)
                 .setPhoto(R.mipmap.profile_picture)
                 .setCover(R.mipmap.profile_cover)
                 .setName("Your Full Name")

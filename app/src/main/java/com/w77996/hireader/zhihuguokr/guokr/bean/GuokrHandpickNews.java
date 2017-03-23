@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.guokr.bean;
+package com.w77996.hireader.zhihuguokr.guokr.bean;
 
 import java.util.ArrayList;
 

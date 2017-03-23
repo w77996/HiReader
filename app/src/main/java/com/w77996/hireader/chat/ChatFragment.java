@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.w77996.hireader.R;
+import com.w77996.hireader.chat.adapter.ChatAdapter;
 import com.w77996.hireader.chat.bean.ChatMsgBean;
 import com.w77996.hireader.chat.contract.ChatContract;
 import com.w77996.hireader.chat.presenter.ChatPresenter;

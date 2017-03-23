@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.guokr.presenter;
+package com.w77996.hireader.zhihuguokr.guokr.presenter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.content.Intent;
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.detail.BeanType;
 import com.w77996.hireader.detail.DetailActivity;
-import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
-import com.w77996.hireader.homepage.guokr.contract.GuokrContract;
+import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.zhihuguokr.guokr.contract.GuokrContract;
 import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.HttpUtils;

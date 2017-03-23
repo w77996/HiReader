@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.zhihudaily;
+package com.w77996.hireader.zhihuguokr.zhihudaily;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,11 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.utils.DateFomatter;
-import com.w77996.hireader.homepage.zhihudaily.adapter.ZhihuDailyAdapter;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
-import com.w77996.hireader.homepage.zhihudaily.contract.ZhihuDailyContract;
+import com.w77996.hireader.zhihuguokr.zhihudaily.adapter.ZhihuDailyAdapter;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.zhihuguokr.zhihudaily.contract.ZhihuDailyContract;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.Calendar;
@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by w77996 on 2017/3/11.
  */
-public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.View{
+public class ZhihuDailyFragment extends Fragment  implements ZhihuDailyContract.View {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;

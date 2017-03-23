@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.zhihudaily.bean;
+package com.w77996.hireader.zhihuguokr.zhihudaily.bean;
 
 import java.util.List;
 

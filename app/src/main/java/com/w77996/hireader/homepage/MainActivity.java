@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.main;
+package com.w77996.hireader.homepage;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -15,13 +15,14 @@ import android.view.MenuItem;
 import com.w77996.hireader.R;
 import com.w77996.hireader.about.AboutActivity;
 import com.w77996.hireader.chat.ChatFragment;
+import com.w77996.hireader.zhihuguokr.ZhihuGuokrMainFragment;
 import com.w77996.hireader.news.NewsFragment;
 import com.w77996.hireader.todayofhistory.TodayOfHistoryFragment;
 import com.w77996.hireader.todayofhistory.presenter.TodayOfHistoryPresenter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  MainFragment mainFragment;
+    private ZhihuGuokrMainFragment zhihuGuokrMainFragment;
     private TodayOfHistoryFragment todayOfHistoryFragment;
     private TodayOfHistoryPresenter todayOfHistoryPresenter;
     private ChatFragment chatFragment;
@@ -34,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mainFragment = MainFragment.getInstance();
+        zhihuGuokrMainFragment = ZhihuGuokrMainFragment.getInstance();
         todayOfHistoryFragment = TodayOfHistoryFragment.getInstance();
         newsFragment = NewsFragment.getInstance();
         chatFragment = ChatFragment.newIntance();
         todayOfHistoryPresenter = new TodayOfHistoryPresenter(MainActivity.this,todayOfHistoryFragment);
-        if(!mainFragment.isAdded()){
-            getSupportFragmentManager().beginTransaction().add(R.id.main_container,mainFragment,"MainFragment").commit();
+        if(!zhihuGuokrMainFragment.isAdded()){
+            getSupportFragmentManager().beginTransaction().add(R.id.main_container, zhihuGuokrMainFragment,"MainFragment").commit();
         }
         if(!todayOfHistoryFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container,todayOfHistoryFragment,"todyFragment").commit();
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         if(!chatFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container,chatFragment,"chatFragment").commit();
         }
-        showMainFragment();
+        showNewsFragment();
     }
 
     private void initView() {
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.show(chatFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(newsFragment);
-        fragmentTransaction.hide(mainFragment);
+        fragmentTransaction.hide(zhihuGuokrMainFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("聊天机器人");
@@ -104,13 +105,13 @@ public class MainActivity extends AppCompatActivity {
     private void showMainFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.show(mainFragment);
+        fragmentTransaction.show(zhihuGuokrMainFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(newsFragment);
         fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();
 
-        toolbar.setTitle(getResources().getString(R.string.app_name));
+        toolbar.setTitle("知乎果壳");
 
     }
 
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(todayOfHistoryFragment);
-        fragmentTransaction.hide(mainFragment);
+        fragmentTransaction.hide(zhihuGuokrMainFragment);
         fragmentTransaction.hide(newsFragment);
         fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(newsFragment);
-        fragmentTransaction.hide(mainFragment);
+        fragmentTransaction.hide(zhihuGuokrMainFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(chatFragment);
         fragmentTransaction.commit();

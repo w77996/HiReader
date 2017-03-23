@@ -1,4 +1,4 @@
-package com.w77996.hireader.chat;
+package com.w77996.hireader.chat.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

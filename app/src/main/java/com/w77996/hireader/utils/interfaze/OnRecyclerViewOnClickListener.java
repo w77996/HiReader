@@ -1,4 +1,4 @@
-package com.w77996.hireader.interfaze;
+package com.w77996.hireader.utils.interfaze;
 
 import android.view.View;
 

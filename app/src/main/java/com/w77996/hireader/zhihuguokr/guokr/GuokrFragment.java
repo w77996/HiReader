@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.guokr;
+package com.w77996.hireader.zhihuguokr.guokr;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,16 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
-import com.w77996.hireader.homepage.guokr.bean.GuokrHandpickNews;
-import com.w77996.hireader.homepage.guokr.contract.GuokrContract;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
+import com.w77996.hireader.zhihuguokr.guokr.contract.GuokrContract;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/13.
  */
-public class GuokrFragment extends Fragment implements GuokrContract.View{
+public class GuokrFragment extends Fragment implements GuokrContract.View {
     private GuokrContract.Presenter presenter;
     private GuokrAdapter guokrAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;

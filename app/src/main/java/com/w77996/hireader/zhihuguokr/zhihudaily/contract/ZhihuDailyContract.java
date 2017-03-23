@@ -1,8 +1,8 @@
-package com.w77996.hireader.homepage.zhihudaily.contract;
+package com.w77996.hireader.zhihuguokr.zhihudaily.contract;
 
 import com.w77996.hireader.base.BasePresenter;
 import com.w77996.hireader.base.BaseView;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
 
 import java.util.List;
 

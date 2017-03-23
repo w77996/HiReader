@@ -1,4 +1,4 @@
-package com.w77996.hireader.homepage.zhihudaily.adapter;
+package com.w77996.hireader.zhihuguokr.zhihudaily.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.w77996.hireader.R;
-import com.w77996.hireader.interfaze.OnRecyclerViewOnClickListener;
-import com.w77996.hireader.homepage.zhihudaily.bean.ZhihuDailyBean;
+import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
+import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
 
 import java.util.ArrayList;
 import java.util.List;
