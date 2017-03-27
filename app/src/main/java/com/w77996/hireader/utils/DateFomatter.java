@@ -45,5 +45,12 @@ public class DateFomatter {
        // Logger.d(date);
         return date;
     }
-
+    public String WeatherDateFormat(){
+        String date;
+        Date d = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        date = format.format(d);
+        // Logger.d(date);
+        return date;
+    }
 }

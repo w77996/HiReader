@@ -28,7 +28,7 @@ public class TodayOfHistoryFragment extends Fragment implements TodayOfHistoryCo
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private TodayOfHistoryContract.Presenter presenter;
     private TodayOfHistoryAdapter todayOfHistoryAdapter;
-    public static TodayOfHistoryFragment getInstance(){
+    public static TodayOfHistoryFragment newInstance(){
         return new TodayOfHistoryFragment();
     }
 

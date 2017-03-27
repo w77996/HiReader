@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import com.w77996.hireader.R;
 import com.w77996.hireader.about.AboutActivity;
 import com.w77996.hireader.chat.ChatFragment;
+import com.w77996.hireader.weather.WeatherFragment;
+import com.w77996.hireader.weather.presenter.WeatherPresenter;
 import com.w77996.hireader.zhihuguokr.ZhihuGuokrMainFragment;
 import com.w77996.hireader.news.NewsFragment;
 import com.w77996.hireader.todayofhistory.TodayOfHistoryFragment;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private TodayOfHistoryPresenter todayOfHistoryPresenter;
     private ChatFragment chatFragment;
     private NewsFragment newsFragment;
+    private WeatherFragment weatherFragment;
+    private WeatherPresenter weatherPresenter;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     NavigationView navigationView;
@@ -35,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        zhihuGuokrMainFragment = ZhihuGuokrMainFragment.getInstance();
-        todayOfHistoryFragment = TodayOfHistoryFragment.getInstance();
-        newsFragment = NewsFragment.getInstance();
+        zhihuGuokrMainFragment = ZhihuGuokrMainFragment.newInstance();
+        todayOfHistoryFragment = TodayOfHistoryFragment.newInstance();
+        newsFragment = NewsFragment.newInstance();
         chatFragment = ChatFragment.newIntance();
+        weatherFragment = WeatherFragment.newInstance();
+
         todayOfHistoryPresenter = new TodayOfHistoryPresenter(MainActivity.this,todayOfHistoryFragment);
+        weatherPresenter = new WeatherPresenter(MainActivity.this,weatherFragment);
         if(!zhihuGuokrMainFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container, zhihuGuokrMainFragment,"MainFragment").commit();
         }
@@ -52,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
         if(!chatFragment.isAdded()){
             getSupportFragmentManager().beginTransaction().add(R.id.main_container,chatFragment,"chatFragment").commit();
         }
+        if(!weatherFragment.isAdded()){
+            getSupportFragmentManager().beginTransaction().add(R.id.main_container,weatherFragment,"waetherFragment").commit();
+        }
         showNewsFragment();
+
     }
 
     private void initView() {
@@ -83,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.startActivity(new Intent(MainActivity.this, AboutActivity.class));
                 }else if(id==R.id.nav_chat){
                    showChatFragment();
+                }else if(id==R.id.nav_weather){
+                    showWeatherFragment();
                 }
                 return true;
             }
@@ -97,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(newsFragment);
         fragmentTransaction.hide(zhihuGuokrMainFragment);
+        fragmentTransaction.hide(weatherFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("聊天机器人");
@@ -109,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(newsFragment);
         fragmentTransaction.hide(chatFragment);
+        fragmentTransaction.hide(weatherFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("知乎果壳");
@@ -122,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.hide(zhihuGuokrMainFragment);
         fragmentTransaction.hide(newsFragment);
         fragmentTransaction.hide(chatFragment);
+        fragmentTransaction.hide(weatherFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("历史上的今天");
@@ -136,11 +152,21 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.hide(zhihuGuokrMainFragment);
         fragmentTransaction.hide(todayOfHistoryFragment);
         fragmentTransaction.hide(chatFragment);
+        fragmentTransaction.hide(weatherFragment);
         fragmentTransaction.commit();
 
         toolbar.setTitle("新闻资讯");
+    }
+    private void showWeatherFragment() {
 
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(weatherFragment);
+        fragmentTransaction.hide(zhihuGuokrMainFragment);
+        fragmentTransaction.hide(todayOfHistoryFragment);
+        fragmentTransaction.hide(chatFragment);
+        fragmentTransaction.hide(newsFragment);
+        fragmentTransaction.commit();
 
-
+        toolbar.setTitle("城市天气");
     }
 }

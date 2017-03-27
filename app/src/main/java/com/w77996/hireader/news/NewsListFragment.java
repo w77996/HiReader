@@ -3,6 +3,7 @@ package com.w77996.hireader.news;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -115,7 +116,15 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
 
     @Override
     public void showError() {
-
+        Snackbar.make(mSwipeRefreshLayout, "加载失败",Snackbar.LENGTH_INDEFINITE)
+                .setAction("重试", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DateFomatter dateFomatter = new DateFomatter();
+                        presenter.request(mType,1,dateFomatter.NewsDateFormat(),true);
+                    }
+                })
+                .show();
     }
 
     @Override

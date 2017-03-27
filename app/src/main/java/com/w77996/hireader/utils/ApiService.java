@@ -1,6 +1,7 @@
 package com.w77996.hireader.utils;
 
 import com.w77996.hireader.chat.bean.ChatBean;
+import com.w77996.hireader.weather.bean.WeatherBean;
 import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDetailBean;
 import com.w77996.hireader.joker.bean.JokerBean;
@@ -50,8 +51,17 @@ public interface ApiService {
     Observable<NewsBean> getNews(
             @Query("channelName") String type,
             @Query("page") int page,
-            @Query("showapi_timestamp") String time);
+            @Query("showapi_timestamp") String time
+    );
 
     @GET("api?key=1c21b0606d78455c8760136c8dadfd70")
-    Observable<ChatBean> getChatData(@Query("info") String info);
+    Observable<ChatBean> getChatData(
+            @Query("info") String info
+    );
+
+    @GET("9-2?area={area}&areaid=0&need3HourForcast=0&needAlarm=0&needHourData=0&needIndex=0&needMoreDay=1&showapi_appid=33655&showapi_test_draft=false&showapi_sign=01b6b253d82c44a08ab329d453ff9d4b")
+    Observable<WeatherBean> getWeatherData(
+            @Path("area") String city,
+            @Query("showapi_timestamp") String showapi_timestamp
+    );
 }

@@ -35,7 +35,7 @@ public class ZhihuGuokrMainFragment extends Fragment {
     public ZhihuGuokrMainFragment(){
 
     }
-    public static ZhihuGuokrMainFragment getInstance(){
+    public static ZhihuGuokrMainFragment newInstance(){
         return new ZhihuGuokrMainFragment();
     }
     @Override

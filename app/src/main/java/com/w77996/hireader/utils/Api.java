@@ -16,4 +16,6 @@ public class Api {
     public static final String SHOWAPI_NEWS= "https://route.showapi.com/";
 
     public static final String ROBOT= "http://www.tuling123.com/openapi/";
+
+    public static final String Weather ="https://route.showapi.com/";
 }

@@ -40,7 +40,7 @@ public class NewsFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FloatingActionButton floatingActionButton;
-    public static NewsFragment getInstance(){
+    public static NewsFragment newInstance(){
         return new NewsFragment();
     }
 
@@ -66,7 +66,7 @@ public class NewsFragment extends Fragment {
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_MILITARY),TYPE_MILITARY);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_FINANCE),TYPE_FINANCE);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_INTERNET),TYPE_INTERNET);
-       // newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_ESTATE),TYPE_ESTATE);
+       // newsPagerAdapter.addFragment(NewsListFragment.newInstance(TYPE_ESTATE),TYPE_ESTATE);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_CAR),TYPE_CAR);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_SPORT),TYPE_SPORT);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_ENTERTAINMENT),TYPE_ENTERTAINMENT);
