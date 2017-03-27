@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.w77996.hireader.detail.BeanType;
 import com.w77996.hireader.detail.DetailActivity;
+import com.w77996.hireader.todayofhistory.TodayOfHistoryDetailActivity;
 import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
 import com.w77996.hireader.todayofhistory.contract.TodayOfHistoryContract;
 import com.w77996.hireader.utils.Api;
@@ -71,7 +72,7 @@ public class TodayOfHistoryPresenter implements TodayOfHistoryContract.Presenter
 
     @Override
     public void loadDetail(int position) {
-        context.startActivity(new Intent(context, DetailActivity.class)
+        context.startActivity(new Intent(context, TodayOfHistoryDetailActivity.class)
                 .putExtra("type", BeanType.TYPE_HISTORY)
                 .putExtra("id", list.get(position).get_id()+""));
     }
