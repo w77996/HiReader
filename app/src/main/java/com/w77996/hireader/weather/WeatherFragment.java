@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
 import com.w77996.hireader.utils.SystemUtils;
 import com.w77996.hireader.weather.bean.WeatherBean;
@@ -33,6 +34,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
 
     WeatherContract.Presenter presenter;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    //WeatherPresenter weatherPresenter;
     RelativeLayout mRelativeLayout;
     TextView mTextViewRefreshTime;
     TextView mTextViewAirIndex;
@@ -52,6 +54,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mContext = getActivity();
     }
 
@@ -92,7 +95,14 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
 
     @Override
     public void showWeather(WeatherBean weather) {
+        Logger.d(weather.getShowapi_res_code()+"");
         mToolbar.setTitle(weather.getShowapi_res_body().getCityInfo().getC5());
+        mTextViewRefreshTime.setText(weather.getShowapi_res_body().getNow().getTemperature_time()+"更新");
+        mTextViewAirIndex.setText("空气指数"+weather.getShowapi_res_body().getNow().getAqi());
+        mTextViewMaxTemp.setText("↑ "+weather.getShowapi_res_body().getF1().getDay_air_temperature()+"℃");
+        mTextViewMinTemp.setText("↓ "+weather.getShowapi_res_body().getF1().getNight_air_temperature()+"℃");
+        mTextViewWeather.setText(weather.getShowapi_res_body().getNow().getWeather());
+        mTextViewTemp.setText(weather.getShowapi_res_body().getNow().getTemperature()+"℃");
     }
 
     @Override
@@ -110,5 +120,12 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
         mRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
         mToolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
         mTextViewRefreshTime = (TextView)view.findViewById(R.id.weather_time);
+        mTextViewAirIndex = (TextView)view.findViewById(R.id.weather_air_index);
+        mTextViewMaxTemp = (TextView)view.findViewById(R.id.temp_max);
+        mTextViewMinTemp = (TextView)view.findViewById(R.id.temp_min);
+        mTextViewWeather = (TextView)view.findViewById(R.id.weather_condition_tv);
+        mImageViewWeather = (ImageView)view.findViewById(R.id.now_weather_img);
+        mTextViewTemp = (TextView)view.findViewById(R.id.weather_tempeture);
+
     }
 }

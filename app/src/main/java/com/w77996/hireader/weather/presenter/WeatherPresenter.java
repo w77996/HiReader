@@ -51,8 +51,9 @@ public class WeatherPresenter implements WeatherContract.Presenter {
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if(aMapLocation!=null){
                     if(aMapLocation.getErrorCode()==0){
+                        requestData("深圳");
                         Logger.d(aMapLocation.getCity() +" "+aMapLocation.getDistrict());
-                        requestData(aMapLocation.getCity());
+                        //requestData(aMapLocation.getCity());
                     }else{
                         requestData("深圳");
                         view.showError();
@@ -66,6 +67,7 @@ public class WeatherPresenter implements WeatherContract.Presenter {
 
     @Override
     public void requestData(String city) {
+        Logger.d("6666666666666");
         DateFomatter dateFomatter = new DateFomatter();
         HttpUtils.getInstance()
                 .create(ApiService.class,Api.Weather)
@@ -76,6 +78,7 @@ public class WeatherPresenter implements WeatherContract.Presenter {
                     @Override
                     public void accept(WeatherBean weatherBean) throws Exception {
                         view.showWeather(weatherBean);
+                        Logger.d(weatherBean.getShowapi_res_code()+"");
                     }
                 }, new Consumer<Throwable>() {
                     @Override

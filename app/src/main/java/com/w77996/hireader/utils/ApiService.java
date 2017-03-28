@@ -63,9 +63,9 @@ public interface ApiService {
             @Query("info") String info
     );
 
-    @GET("9-2?area={area}&areaid=0&need3HourForcast=0&needAlarm=0&needHourData=0&needIndex=0&needMoreDay=1&showapi_appid=33655&showapi_test_draft=false&showapi_sign=01b6b253d82c44a08ab329d453ff9d4b")
+    @GET("9-2?areaid=&need3HourForcast=0&needAlarm=0&needHourData=0&needIndex=0&needMoreDay=1&showapi_appid=33655&showapi_test_draft=false&showapi_sign=01b6b253d82c44a08ab329d453ff9d4b")
     Observable<WeatherBean> getWeatherData(
-            @Path("area") String city,
+            @Query("area") String city,
             @Query("showapi_timestamp") String showapi_timestamp
     );
 }
