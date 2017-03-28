@@ -1,6 +1,7 @@
 package com.w77996.hireader.utils;
 
 import com.w77996.hireader.chat.bean.ChatBean;
+import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryDetailBean;
 import com.w77996.hireader.weather.bean.WeatherBean;
 import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDetailBean;
@@ -46,7 +47,10 @@ public interface ApiService {
             @Query("month") String month,
             @Query("day") String day
     );
-
+    @GET("tohdet?v=&key=02351f897b139cc86e39a225aaeaa42d")
+    Observable<TodayOfHistoryDetailBean> getTodayOfHistoryDetailData(
+            @Query("id") String id
+    );
     @GET("109-35?channelId=&maxResult=10&needAllList=0&needContent=0&needHtml=0&showapi_appid=33655&title=&showapi_sign=01b6b253d82c44a08ab329d453ff9d4b")
     Observable<NewsBean> getNews(
             @Query("channelName") String type,

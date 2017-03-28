@@ -122,6 +122,7 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
                     public void onClick(View v) {
                         DateFomatter dateFomatter = new DateFomatter();
                         presenter.request(mType,1,dateFomatter.NewsDateFormat(),true);
+
                     }
                 })
                 .show();

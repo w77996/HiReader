@@ -53,6 +53,9 @@ public class WeatherPresenter implements WeatherContract.Presenter {
                     if(aMapLocation.getErrorCode()==0){
                         Logger.d(aMapLocation.getCity() +" "+aMapLocation.getDistrict());
                         requestData(aMapLocation.getCity());
+                    }else{
+                        requestData("深圳");
+                        view.showError();
                     }
                 }
             }

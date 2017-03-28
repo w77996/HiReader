@@ -142,8 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setTitle("历史上的今天");
 
-
-
     }
     private void showNewsFragment() {
 
