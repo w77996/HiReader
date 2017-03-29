@@ -24,6 +24,10 @@
         <service android:name="com.amap.api.location.APSService"></service>
         <activity android:name=".todayofhistory.TodayOfHistoryDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".setting.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".webview.WebViewDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
     <!--用于进行网络定位-->

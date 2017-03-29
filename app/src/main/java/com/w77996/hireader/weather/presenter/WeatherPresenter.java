@@ -67,6 +67,7 @@ public class WeatherPresenter implements WeatherContract.Presenter {
 
     @Override
     public void requestData(String city) {
+        view.showLoading();
         Logger.d("6666666666666");
         DateFomatter dateFomatter = new DateFomatter();
         HttpUtils.getInstance()
@@ -78,12 +79,14 @@ public class WeatherPresenter implements WeatherContract.Presenter {
                     @Override
                     public void accept(WeatherBean weatherBean) throws Exception {
                         view.showWeather(weatherBean);
+                        view.stopLoading();
                         Logger.d(weatherBean.getShowapi_res_code()+"");
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         view.showError();
+                        view.stopLoading();
                     }
                 });
     }

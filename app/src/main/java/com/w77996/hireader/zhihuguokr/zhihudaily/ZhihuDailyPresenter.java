@@ -10,6 +10,7 @@ import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.DateFomatter;
 import com.w77996.hireader.utils.HttpUtils;
+import com.w77996.hireader.webview.WebViewDetailActivity;
 import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
 import com.w77996.hireader.zhihuguokr.zhihudaily.contract.ZhihuDailyContract;
 
@@ -82,7 +83,7 @@ public class ZhihuDailyPresenter implements ZhihuDailyContract.Presenter {
 
     @Override
     public void loadDetail(int position) {
-        Intent intent = new Intent(mContext, DetailActivity.class);
+        Intent intent = new Intent(mContext, WebViewDetailActivity.class);
         Logger.d(list.get(position).getId());
         intent.putExtra("id",list.get(position).getId()+"");
         intent.putExtra("type", BeanType.TYPE_ZHIHU);

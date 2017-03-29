@@ -11,6 +11,7 @@ import com.w77996.hireader.news.contract.NewsListContract;
 import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.HttpUtils;
+import com.w77996.hireader.webview.WebViewDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +84,7 @@ public class NewsListPresenter implements NewsListContract.Presenter {
 
     @Override
     public void showDetail(int position) {
-        context.startActivity(new Intent(context, DetailActivity.class)
+        context.startActivity(new Intent(context, WebViewDetailActivity.class)
                 .putExtra("type", BeanType.TYPE_NEWS)
                 .putExtra("link", list.get(position).getLink()+""));
     }

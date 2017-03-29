@@ -3,6 +3,7 @@ package com.w77996.hireader.weather;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
 import com.w77996.hireader.utils.SystemUtils;
@@ -46,7 +48,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
     Toolbar mToolbar;
     private Context mContext;
     private int mNowWeatherHeight=-1;
-
+    private String mCity;
     public static WeatherFragment newInstance(){
         return new WeatherFragment();
     }
@@ -64,6 +66,12 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
         View view  =inflater.inflate(R.layout.fragment_weather,container,false);
 
         initView(view);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.loadLocation();
+            }
+        });
         presenter.loadLocation();
         return view;
     }
@@ -80,7 +88,14 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
 
     @Override
     public void showError() {
-
+        Snackbar.make(mSwipeRefreshLayout, "加载失败",Snackbar.LENGTH_INDEFINITE)
+                .setAction("重试", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.loadLocation();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -96,13 +111,14 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
     @Override
     public void showWeather(WeatherBean weather) {
         Logger.d(weather.getShowapi_res_code()+"");
-        mToolbar.setTitle(weather.getShowapi_res_body().getCityInfo().getC5());
+       mCity = weather.getShowapi_res_body().getCityInfo().getC5();
         mTextViewRefreshTime.setText(weather.getShowapi_res_body().getNow().getTemperature_time()+"更新");
         mTextViewAirIndex.setText("空气指数"+weather.getShowapi_res_body().getNow().getAqi());
         mTextViewMaxTemp.setText("↑ "+weather.getShowapi_res_body().getF1().getDay_air_temperature()+"℃");
         mTextViewMinTemp.setText("↓ "+weather.getShowapi_res_body().getF1().getNight_air_temperature()+"℃");
         mTextViewWeather.setText(weather.getShowapi_res_body().getNow().getWeather());
         mTextViewTemp.setText(weather.getShowapi_res_body().getNow().getTemperature()+"℃");
+        Glide.with(mContext).load(weather.getShowapi_res_body().getNow().getWeather_pic()).asBitmap().into(mImageViewWeather);
     }
 
     @Override
@@ -110,6 +126,14 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
         if(presenter!=null){
             this.presenter = presenter;
         }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
+            mToolbar.setTitle(mCity);
+        }
+        super.onHiddenChanged(hidden);
     }
 
     @Override

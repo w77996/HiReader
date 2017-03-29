@@ -57,7 +57,7 @@ public class NewsFragment extends Fragment {
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager = (ViewPager)view.findViewById(R.id.fragment_main_viewpager);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(12);
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.fragment_main_fab);
         floatingActionButton.hide();
         NewsPagerAdapter newsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager());
@@ -79,5 +79,11 @@ public class NewsFragment extends Fragment {
         viewPager.setAdapter(newsPagerAdapter);
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
 
+        }
+        super.onHiddenChanged(hidden);
+    }
 }

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.w77996.hireader.R;
 import com.w77996.hireader.about.AboutActivity;
 import com.w77996.hireader.chat.ChatFragment;
+import com.w77996.hireader.setting.SettingActivity;
 import com.w77996.hireader.weather.WeatherFragment;
 import com.w77996.hireader.weather.presenter.WeatherPresenter;
 import com.w77996.hireader.zhihuguokr.ZhihuGuokrMainFragment;
@@ -96,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                    showChatFragment();
                 }else if(id==R.id.nav_weather){
                     showWeatherFragment();
+                }else if(id==R.id.nav_settings){
+                    MainActivity.this.startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 }
                 return true;
             }
