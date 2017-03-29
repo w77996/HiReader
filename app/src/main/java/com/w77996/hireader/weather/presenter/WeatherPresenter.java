@@ -11,6 +11,7 @@ import com.w77996.hireader.utils.Api;
 import com.w77996.hireader.utils.ApiService;
 import com.w77996.hireader.utils.DateFomatter;
 import com.w77996.hireader.utils.HttpUtils;
+import com.w77996.hireader.weather.CityFomat;
 import com.w77996.hireader.weather.bean.WeatherBean;
 import com.w77996.hireader.weather.contract.WeatherContract;
 
@@ -51,7 +52,8 @@ public class WeatherPresenter implements WeatherContract.Presenter {
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if(aMapLocation!=null){
                     if(aMapLocation.getErrorCode()==0){
-                        requestData("深圳");
+                        String city = CityFomat.extractLocation(aMapLocation.getCity(),aMapLocation.getDistrict());
+                        requestData(city);
                         Logger.d(aMapLocation.getCity() +" "+aMapLocation.getDistrict());
                         //requestData(aMapLocation.getCity());
                     }else{
