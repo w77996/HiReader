@@ -40,7 +40,7 @@ public class AboutActivity extends AppCompatActivity {
         Intent intent = new Intent();
         AboutView view = AboutBuilder.with(this)
                 .setBackgroundColor(R.color.mdtp_background_color)
-                .setPhoto(R.mipmap.profile_picture)
+                .setPhoto(R.drawable.tou)
                 .setCover(R.mipmap.profile_cover)
                 .setName("w77996")
                 .setSubTitle("Android Develop")
