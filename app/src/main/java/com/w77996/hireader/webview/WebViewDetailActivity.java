@@ -112,14 +112,9 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 mWebView.loadUrl(id);
                 break;
         }
-
-
         initWebView();
-
         initWebSettings();
-
         initWebViewClient();
-
         initWebChromeClient();
     }
 
@@ -188,69 +183,29 @@ public class WebViewDetailActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_more, menu);
         return true;
     }
-    /**
-     * 初始化 webSetting
-     */
     private void initWebSettings() {
-        // 支持 JS
+
         mWebViewSettings.setJavaScriptEnabled(true);
-
-        // 设置缓存
-        // LOAD_CACHE_ONLY: 不使用网络，只读取本地缓存数据。
-        // LOAD_DEFAULT: 根据cache-control决定是否从网络上取数据。
-        // LOAD_CACHE_NORMAL: API level 17中已经废弃, 从API level 11开始作用同LOAD_DEFAULT模式。
-        // LOAD_NO_CACHE: 不使用缓存，只从网络获取数据。
-        // LOAD_CACHE_ELSE_NETWORK：只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。
         mWebViewSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
-
-        // 开启DOM storage API 功能
         mWebViewSettings.setDomStorageEnabled(true);
-
-        // 设置 数据库 缓存路径
         mWebViewSettings.setDatabaseEnabled(true);
-
-        // 设置默认编码
         mWebViewSettings.setDefaultTextEncodingName("utf-8");
-
-        // 将图片调整到适合 webView 的大小
         mWebViewSettings.setUseWideViewPort(false);
-
-        // 支持缩放
         mWebViewSettings.setSupportZoom(true);
-
-        // 支持内容重新布局
         mWebViewSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-
-        // 多窗口
         mWebViewSettings.setSupportMultipleWindows(true);
-
-        // 设置可以访问文件
         mWebViewSettings.setAllowFileAccess(true);
-
-        // 当 webView 调用 requestFocus 时为 webView 设置节点
         mWebViewSettings.setNeedInitialFocus(true);
-
-        // 设置支持缩放
         mWebViewSettings.setBuiltInZoomControls(true);
-
-        // 支持通过 JS 打开新窗口
         mWebViewSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-
-        // 缩放至至屏幕大小
         mWebViewSettings.setLoadWithOverviewMode(true);
     }
 
-    /**
-     * 初始化 webView
-     */
     private void initWebView() {
         //mWebView.loadUrl(mUrl);
         mWebViewSettings = mWebView.getSettings();
@@ -273,10 +228,6 @@ public class WebViewDetailActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * 初始化 webChromeClient
-     */
     private void initWebChromeClient() {
         mWebView.setWebChromeClient(new WebChromeClient(){
 
@@ -286,10 +237,6 @@ public class WebViewDetailActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * 初始化 webViewClient
-     */
     private void initWebViewClient() {
         mWebView.setWebViewClient(new WebViewClient(){
             @Override

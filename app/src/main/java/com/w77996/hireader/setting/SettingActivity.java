@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
@@ -44,7 +45,9 @@ public class SettingActivity extends AppCompatActivity {
         mLinearLayoutClearCache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                GlideCacheUtils.getInstance().clearImageAllCache(getApplicationContext());
+                mTextViewCache.setText(GlideCacheUtils.getInstance().getCacheSize(getApplicationContext()));
+                Toast.makeText(getApplicationContext(),"清除成功",Toast.LENGTH_SHORT).show();
             }
         });
     }
