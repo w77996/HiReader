@@ -6,11 +6,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.DownloadListener;
@@ -53,7 +57,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
     private TextView mTitle;
     private ProgressBar mProgressBar;
     private ProgressBar mProgress;
-
+    private LayoutInflater layoutInflater;
     private static final String TAG = "MainActivity----->";
     private WebSettings mWebViewSettings;
     private int mType;
@@ -64,6 +68,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
         initView();
+        layoutInflater = LayoutInflater.from(this);
         Intent intent = getIntent();
         mType = intent.getIntExtra("type",1);
        // mWebView.setWebViewClient(new webViewClient());
@@ -134,9 +139,62 @@ public class WebViewDetailActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
-        } else {
+        } else if (item.getItemId() ==R.id.action_more){
+                Logger.d("fasdf");
+            final BottomSheetDialog dialog = new BottomSheetDialog(this);
+
+            View view = layoutInflater.inflate(R.layout.menu_sheet, null);
+
+            // copy the article's link to clipboard
+            view.findViewById(R.id.layout_copy_link).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                   // presenter.copyLink();
+                }
+            });
+
+            // open the link in browser
+            view.findViewById(R.id.layout_open_in_browser).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                   // presenter.openInBrowser();
+                }
+            });
+
+            // copy the text content to clipboard
+            view.findViewById(R.id.layout_copy_text).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                   // presenter.copyText();
+                }
+            });
+
+            // shareAsText the content as text
+            view.findViewById(R.id.layout_share_text).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                  //  presenter.shareAsText();
+                }
+            });
+
+            dialog.setContentView(view);
+            dialog.show();
+            return true;
+        }else{
             return super.onOptionsItemSelected(item);
         }
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_more, menu);
+        return true;
     }
     /**
      * 初始化 webSetting

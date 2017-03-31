@@ -53,9 +53,9 @@ public class TodayOfHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Glide.with(context)
                     .load(list.get(position).getPic())
                     .asBitmap()
-                    .placeholder(R.mipmap.ic_launcher)
+                    .placeholder(R.drawable.icon_load)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .error(R.mipmap.ic_launcher)
+                    .error(R.drawable.icon_error)
                     .centerCrop()
                     .into(((NormalViewHolder)holder).ivHeadlineImg);
 
