@@ -45,7 +45,7 @@ public class TodayOfHistoryFragment extends Fragment implements TodayOfHistoryCo
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                presenter.requestData();
+                presenter.refresh();
             }
         });
         presenter.start();

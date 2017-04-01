@@ -66,6 +66,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
         View view  =inflater.inflate(R.layout.fragment_weather,container,false);
 
         initView(view);
+
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -139,6 +140,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
     @Override
     public void initView(View view) {
         mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.weather_swiperefresh);
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         mRelativeLayout = (RelativeLayout) view.findViewById(R.id.main_now_weather);
         mNowWeatherHeight = SystemUtils.getDisplayHeight(mContext) - SystemUtils.getActionBarSize(mContext) - SystemUtils.getStatusBarHeight(mContext);
         mRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));

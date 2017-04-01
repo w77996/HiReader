@@ -46,7 +46,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GlideCacheUtils.getInstance().clearImageAllCache(getApplicationContext());
-                mTextViewCache.setText(GlideCacheUtils.getInstance().getCacheSize(getApplicationContext()));
+                mTextViewCache.setText("0.0Byte");
                 Toast.makeText(getApplicationContext(),"清除成功",Toast.LENGTH_SHORT).show();
             }
         });

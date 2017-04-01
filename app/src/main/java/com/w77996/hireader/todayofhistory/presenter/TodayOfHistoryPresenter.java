@@ -67,6 +67,7 @@ public class TodayOfHistoryPresenter implements TodayOfHistoryContract.Presenter
 
     @Override
     public void refresh() {
+        list.clear();
         requestData();
     }
 

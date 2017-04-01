@@ -1,5 +1,7 @@
 package com.w77996.hireader.webview;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +12,7 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -53,16 +56,13 @@ public class WebViewDetailActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private WebView mWebView;
 
-    private ImageView ivLeftBack;
-    private TextView mTitle;
+
     private ProgressBar mProgressBar;
     private ProgressBar mProgress;
     private LayoutInflater layoutInflater;
-    private static final String TAG = "MainActivity----->";
     private WebSettings mWebViewSettings;
     private int mType;
-
-    //private String mUrl = "";
+    private String mUrl="https://github.com/w77996";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +89,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
                             public void accept(ZhihuDetailBean zhihuDetailBean) throws Exception {
                                 String url = zhihuDetailBean.getShare_url();
                                 Logger.d(url);
+                                mUrl =url;
                                 mWebView.loadUrl(url);
                             }
                         }, new Consumer<Throwable>() {
@@ -102,6 +103,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 id= intent.getStringExtra("id");
                 url = Api.GUOKR_ARTICLE_LINK+"pick/"+id;
                 Logger.d(url);
+                mUrl =url;
                 mWebView.loadUrl(url);
                 break;
             case BeanType.TYPE_HISTORY:
@@ -109,6 +111,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 break;
             case BeanType.TYPE_NEWS:
                 id= intent.getStringExtra("link");
+                mUrl =id;
                 mWebView.loadUrl(id);
                 break;
         }
@@ -145,7 +148,7 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
-                   // presenter.copyLink();
+                   copyLink();
                 }
             });
 
@@ -154,18 +157,21 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(mUrl));
+                   startActivity(intent);
                    // presenter.openInBrowser();
                 }
             });
 
-            // copy the text content to clipboard
+     /*       // copy the text content to clipboard
             view.findViewById(R.id.layout_copy_text).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
                    // presenter.copyText();
                 }
-            });
+            });*/
 
             // shareAsText the content as text
             view.findViewById(R.id.layout_share_text).setOnClickListener(new View.OnClickListener() {
@@ -173,6 +179,11 @@ public class WebViewDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     dialog.dismiss();
                   //  presenter.shareAsText();
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, mUrl);
+                    startActivity(Intent.createChooser(sharingIntent, "分享"));
                 }
             });
 
@@ -293,5 +304,13 @@ public class WebViewDetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void copyLink() {
+        ClipboardManager manager = (ClipboardManager) getApplication().getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = null;
+        clipData = ClipData.newPlainText("text", mUrl);
+        manager.setPrimaryClip(clipData);
+        Toast.makeText(getApplicationContext(),"已复制链接至粘贴板",Toast.LENGTH_SHORT).show();
     }
 }
