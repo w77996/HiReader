@@ -63,9 +63,12 @@ public class NewsFragment extends Fragment {
         NewsPagerAdapter newsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager());
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_DOMESTIC),TYPE_DOMESTIC);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_INTERNETIONAL),TYPE_INTERNETIONAL);
+        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_INTERNET),TYPE_INTERNET);
+        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_TECHNOLOGY),TYPE_TECHNOLOGY);
+        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_SOCIAL),TYPE_SOCIAL);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_MILITARY),TYPE_MILITARY);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_FINANCE),TYPE_FINANCE);
-        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_INTERNET),TYPE_INTERNET);
+
        // newsPagerAdapter.addFragment(NewsListFragment.newInstance(TYPE_ESTATE),TYPE_ESTATE);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_CAR),TYPE_CAR);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_SPORT),TYPE_SPORT);
@@ -73,8 +76,7 @@ public class NewsFragment extends Fragment {
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_GAMES),TYPE_GAMES);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_EDUCATIONAL),TYPE_EDUCATIONAL);
         newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_WOMEN),TYPE_WOMEN);
-        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_TECHNOLOGY),TYPE_TECHNOLOGY);
-        newsPagerAdapter.addFragment(NewsListFragment.getInstance(TYPE_SOCIAL),TYPE_SOCIAL);
+
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(newsPagerAdapter);
     }

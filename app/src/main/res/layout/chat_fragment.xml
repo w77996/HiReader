@@ -24,9 +24,11 @@
         android:layout_weight="1"
         android:layout_height="60dp" />
         <Button
+            android:background="#00000000"
             android:id="@+id/robot_btn"
             android:layout_width="80dp"
             android:layout_height="40dp"
+            android:drawableLeft="@drawable/icon_send"
             android:text="发送"/>
     </LinearLayout>
 </LinearLayout>

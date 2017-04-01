@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.w77996.hireader.R;
+import com.w77996.hireader.zhihuguokr.guokr.adapter.GuokrAdapter;
 import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.zhihuguokr.guokr.contract.GuokrContract;
 import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;

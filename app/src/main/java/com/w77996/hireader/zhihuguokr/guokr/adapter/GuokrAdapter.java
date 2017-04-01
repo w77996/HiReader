@@ -1,4 +1,4 @@
-package com.w77996.hireader.zhihuguokr.guokr;
+package com.w77996.hireader.zhihuguokr.guokr.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -42,7 +42,7 @@ public class GuokrAdapter extends RecyclerView.Adapter<GuokrAdapter.GuokrViewHol
     public void onBindViewHolder(GuokrViewHolder holder, int position) {
         Glide.with(mContext).load(list.get(position).getHeadline_img_tb())
                 .asBitmap()
-                .placeholder(R.drawable.icon_load)
+                .placeholder(R.mipmap.ic_launcher)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.icon_error)
                 .centerCrop()

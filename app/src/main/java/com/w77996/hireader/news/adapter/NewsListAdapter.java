@@ -55,7 +55,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 Glide.with(context)
                         .load(list.get(position).getImageurls().get(0).getUrl())
                         .asBitmap()
-                        .placeholder(R.drawable.icon_load)
+                        .placeholder(R.mipmap.ic_launcher)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .error(R.drawable.icon_error)
                         .centerCrop()

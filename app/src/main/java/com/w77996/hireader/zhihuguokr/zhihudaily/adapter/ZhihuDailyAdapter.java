@@ -61,7 +61,7 @@ public class ZhihuDailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Glide.with(mContext)
                         .load(storiesBean.getImages().get(0))
                         .asBitmap()
-                        .placeholder(R.drawable.icon_load)
+                        .placeholder(R.mipmap.ic_launcher)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .error(R.drawable.icon_error)
                         .centerCrop()
