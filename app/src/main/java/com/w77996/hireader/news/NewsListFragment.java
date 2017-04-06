@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.orhanobut.logger.Logger;
 import com.w77996.hireader.R;
+import com.w77996.hireader.base.BaseFragment;
 import com.w77996.hireader.utils.interfaze.OnRecyclerViewOnClickListener;
 import com.w77996.hireader.news.adapter.NewsListAdapter;
 import com.w77996.hireader.news.bean.NewsBean;
@@ -27,7 +28,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/3/15.
  */
-public class NewsListFragment extends Fragment implements NewsListContract.View {
+public class NewsListFragment extends BaseFragment implements NewsListContract.View {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -36,6 +37,9 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
     private NewsListContract.Presenter presenter;
     private NewsListAdapter newsListAdapter;
     private FloatingActionButton floatingActionButton;
+
+    private boolean isPreper;// 标识fragment视图已经初始化完毕
+    private boolean hasFetchData;// 标识已经触发过懒加载数据
     private int pager =1;
     public static NewsListFragment getInstance(String type){
         Bundle args = new Bundle();
@@ -48,16 +52,17 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        newsListPresenter = new NewsListPresenter(getContext(),this);
-        mType = getArguments().getString("type");
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content,container,false);
+        newsListPresenter = new NewsListPresenter(getContext(),this);
+        mType = getArguments().getString("type");
         initView(view);
-
+        isPreper = true;
         Logger.d(mType);
         DateFomatter dateFomatter = new DateFomatter();
 //        Logger.d("dddddddddddddddddddddddddddddddddddd");
@@ -94,6 +99,15 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
         return view;
     }
 
+   /* @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()&&isPreper) {
+            DateFomatter dateFomatter = new DateFomatter();
+//        Logger.d("dddddddddddddddddddddddddddddddddddd");
+            presenter.request(mType,1,dateFomatter.NewsDateFormat(),true);
+        }
+    }*/
     @Override
     public void showLoading() {
         mSwipeRefreshLayout.post(new Runnable() {
@@ -116,6 +130,7 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
 
     @Override
     public void showError() {
+        Logger.d(mType);
         Snackbar.make(mSwipeRefreshLayout, "加载失败",Snackbar.LENGTH_INDEFINITE)
                 .setAction("重试", new View.OnClickListener() {
                     @Override
@@ -145,6 +160,14 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
         }
     }
 
+/*    @Override
+    public void onResume() {
+        super.onResume();
+        DateFomatter dateFomatter = new DateFomatter();
+//        Logger.d("dddddddddddddddddddddddddddddddddddd");
+        presenter.request(mType,1,dateFomatter.NewsDateFormat(),true);
+    }*/
+
     @Override
     public void setPresenter(NewsListContract.Presenter presenter) {
         if(presenter!=null){
@@ -162,5 +185,32 @@ public class NewsListFragment extends Fragment implements NewsListContract.View 
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         floatingActionButton = (FloatingActionButton)getActivity().findViewById(R.id.fragment_main_fab);
         floatingActionButton.hide();
+    }
+  /*  @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Logger.d(getClass().getName() + "------>isVisibleToUser = " +               isVisibleToUser);
+        if (isVisibleToUser) {//当当前为显示页面时
+            lazyFetchDataIfPrepared();
+        }
+    }*/
+    private void lazyFetchDataIfPrepared() {
+// 用户可见fragment && 没有加载过数据 && 视图已经准备完毕
+        if (getUserVisibleHint() && !hasFetchData && isPreper) {
+            hasFetchData = true; //已加载过数据
+           // lazyFetchData();
+            DateFomatter dateFomatter = new DateFomatter();
+//        Logger.d("dddddddddddddddddddddddddddddddddddd");
+            presenter.request(mType,1,dateFomatter.NewsDateFormat(),true);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+       // onPause();
+        newsListAdapter=null;
+        super.onDestroyView();
+        hasFetchData = false;
+        isPreper = false;
     }
 }

@@ -89,7 +89,7 @@ public class WeatherFragment extends Fragment implements WeatherContract.View{
 
     @Override
     public void showError() {
-        Snackbar.make(mSwipeRefreshLayout, "加载失败",Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(mSwipeRefreshLayout, "天气加载失败",Snackbar.LENGTH_INDEFINITE)
                 .setAction("重试", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

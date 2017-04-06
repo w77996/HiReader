@@ -57,7 +57,7 @@ public class NewsFragment extends Fragment {
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager = (ViewPager)view.findViewById(R.id.fragment_main_viewpager);
-        viewPager.setOffscreenPageLimit(12);
+        viewPager.setOffscreenPageLimit(4);
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.fragment_main_fab);
         floatingActionButton.hide();
         NewsPagerAdapter newsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager());
