@@ -5,7 +5,7 @@ import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryDetailBean;
 import com.w77996.hireader.weather.bean.WeatherBean;
 import com.w77996.hireader.zhihuguokr.guokr.bean.GuokrHandpickNews;
 import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDetailBean;
-import com.w77996.hireader.joker.bean.JokerBean;
+
 import com.w77996.hireader.news.bean.NewsBean;
 import com.w77996.hireader.todayofhistory.bean.TodayOfHistoryBean;
 import com.w77996.hireader.zhihuguokr.zhihudaily.bean.ZhihuDailyBean;
@@ -36,11 +36,11 @@ public interface ApiService {
     Observable<String> getGuoKrDetail(
             @Path("id") String id);
 
-    @GET("text.from?key=ae240f7fba620fc370b803566654949e")
+  /*  @GET("text.from?key=ae240f7fba620fc370b803566654949e")
     Observable<JokerBean> getJokerData(
             @Query("page") int page,
             @Query("pagesize") int pagesize
-    );
+    );*/
 
     @GET("toh?v=&key=02351f897b139cc86e39a225aaeaa42d")
     Observable<TodayOfHistoryBean> getTodayOfHistoryData(
